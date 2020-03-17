@@ -1,27 +1,28 @@
 {
-  "name": "curriculumDemos",
+  "name": "mvc-basics-movie-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "connect-mongo": "^3.2.0",
-    "express": "^4.17.1",
-    "express-session": "^1.17.0",
-    "hbs": "^4.1.0",
-    "mongoose": "^5.9.4"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Frankie-B/mvc-basics.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Frankie-B/mvc-basics/issues"
   },
   "homepage": "https://github.com/Frankie-B/mvc-basics#readme",
-  "description": ""
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "hbs": "^4.1.0",
+    "mongoose": "^5.9.5"
+  }
 }
