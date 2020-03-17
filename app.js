@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const hbs = require('hbs');
 // const session = require('session');
 // const MongoStore = require('connect-mongo')(session);
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 mongoose
@@ -21,7 +22,6 @@ mongoose
   });
 
 // Setting up Handlebars
-
 app.set('PORT', 3000);
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
@@ -29,6 +29,7 @@ app.use(express.static('public'));
 
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/movies'));
+// app.use('/', require('./routes/create'));
 
 // listening on port 3000
 app.listen(app.get('PORT'), () => {
