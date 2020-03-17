@@ -28,6 +28,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static('public'));
 
 app.use('/', require('./routes/index'));
+app.use('/', require('./routes/movies'));
 
 // listening on port 3000
 app.listen(app.get('PORT'), () => {
