@@ -1,14 +1,14 @@
-<div class="random-container">
-  <img src="{{randomBeer.image_url}}" alt="" class="random-img">
-  <div class="random-text">
-    <h1 class="random-name">{{randomBeer.name}}</h1>
-    <h5 class="random-tagline">{{randomBeer.tagline}}</h5>
-    <div class="random-description">{{randomBeer.description}}</div>
+<div class="oneMovie-container"> 
+  <div class="oneMovie-text">
+    <h1 class="oneMovie-name">{{movieHbs.title}}</h1>
+    <h5 class="oneMovie-tagline">{{movieHbs.year}}</h5>
+    <div class="oneMovie-description">{{movieHbs.director}}</div>
     <br>
-    <div class="random-pairing">
-      <h5 class="random-subheading">Food Pairing</h5>
-      {{randomBeer.food_pairing}}
+    <div class="oneMovie-subContainer">
+      <h3 class="oneMovie-subheading">{{movieHbs.rate}}</h3>
     </div>
-    <div class="random-tips"><span class="tips-subheading">Brewers Tips: </span>{{randomBeer.brewers_tips}}</div>
+    <div class="oneMovie-btn"></div>
+    <a href="/movie/update/{{movieHbs._id}}"><button class="oneMovie-edit">Edit movie</button></a>
   </div>
 </div>
+{{!-- class started  --}}
