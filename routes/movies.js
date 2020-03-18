@@ -10,7 +10,7 @@ app.get('/movie', (req, res) => {
 });
 
 // Displaying the details for a single movie from the database
-app.get('/movie/details/:movieId', (req, res) => {
+app.get('/movie/detail/:movieId', (req, res) => {
   Movie.findById(req.params.movieId)
     .then(movieData => {
       res.render('movie', { movieHbs: movieData });
@@ -48,7 +48,7 @@ app.post('/movie/create', (req, res) => {
     duration: req.body.duration,
   })
     .then(movie => {
-      res.redirect(`/movie/details${movie._id}`);
+      res.redirect(`/movie/detail/${movie._id}`);
     })
     .catch(error => {
       console.log('Unable to create movie', error);
@@ -56,5 +56,6 @@ app.post('/movie/create', (req, res) => {
 });
 
 // Deleting a an entry from the movie database.
+// app.get('/movie/delet');
 
 module.exports = app;

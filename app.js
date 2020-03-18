@@ -29,7 +29,6 @@ app.use(express.static('public'));
 
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/movies'));
-// app.use('/', require('./routes/create'));
 
 // listening on port 3000
 app.listen(app.get('PORT'), () => {
