@@ -56,7 +56,7 @@ app.post('/movie/create', (req, res) => {
 
 // Updating an exist entry
 app.get('/movie/update/:id', (req, res) => {
-  Movie.findById(req.params.id) //look at line 17
+  Movie.findById(req.params.id)
     .then(movieData => {
       res.render('updateMovie', { movieHbs: movieData });
     })

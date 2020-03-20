@@ -1,15 +1,31 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const hbs = require('hbs');
-// const session = require('session');
-// const MongoStore = require('connect-mongo')(session);
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const session = require('session');
+const MongoStore = require('connect-mongo')(session);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+Starting cookie session for user
+app.use(
+session({
+secret: 'basic-auth-secret',
+cookie: { maxAge: 60000 },
+store: new MongoStore({
+mongooseConnection: mongoose.connection,
+ttl: 24 * 60 * 60, // (1 day) time to live = how long the cookie will be valid
+}),
+})
+);
+
+// Connection to the database
 mongoose
-  .connect('mongodb://localhost/imdb', {
+  .connect(process.env.db, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -22,15 +38,33 @@ mongoose
   });
 
 // Setting up Handlebars
-app.set('PORT', 3000);
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static('public'));
+app.use(protect);
 
 app.use('/', require('./routes/index'));
+app.use('/user', require('./routes/user'));
+app.use('/', require('./routes/movies'));
 app.use('/', require('./routes/movies'));
 
+// Protection of routes
+app.use('./movies',protect) 
+app.use('./movie',protect) 
+
+
+
+// Protection for routes if user is not logged in
+function protect(req, res next) {    
+    console.log('Protect');
+    if(req.session.currentUser) {
+     next(); 
+    } else {
+      res.redirect(/user/login)
+    };
+ }
+
 // listening on port 3000
-app.listen(app.get('PORT'), () => {
-  console.log('app listening on', app.get('PORT'));
+app.listen(process.env.PORT, () => {
+  console.log('app listening on', process.env.PORT);
 });
