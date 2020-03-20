@@ -39,6 +39,7 @@ mongoose
   });
 
 // Protection function for routes if user is not logged in
+// Protection
 function protect(req, res, next) {
   if (req.session.currentUser) {
     next();
