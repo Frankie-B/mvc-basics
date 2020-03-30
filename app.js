@@ -39,7 +39,6 @@ mongoose
   });
 
 // Protection function for routes if user is not logged in
-// Protection
 function protect(req, res, next) {
   if (req.session.currentUser) {
     next();
@@ -58,7 +57,6 @@ app.use('/movie', protect);
 
 app.use('/', require('./routes/index'));
 app.use('/user', require('./routes/user'));
-app.use('/', require('./routes/movies'));
 app.use('/', require('./routes/movies'));
 
 // listening on port 3000

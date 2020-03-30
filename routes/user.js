@@ -1,13 +1,7 @@
 const express = require('express');
 const app = express();
-// const multer = require('multer');
-// const upload = multer({ dest: 'uploads/' });
-
 const User = require('../models/UserModel');
 const bcrypt = require('bcrypt');
-
-// var multer = require('multer');
-// var upload = multer({ dest: 'uploads/' });
 
 // GET request for user route
 app.get('/signup', (req, res) => {
